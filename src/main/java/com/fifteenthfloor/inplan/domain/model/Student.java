@@ -4,18 +4,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * @author Valeriy Knyazhev valeriy.knyazhev@yandex.ru
  */
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-public abstract class User {
+public class Student extends User {
 
-    private String login;
+    private String firstname;
 
-    private String passwordHash;
+    private String middlename;
 
-    private String email;
+    private String lastname;
+
+    private Sex sex = Sex.Other;
+
+    private Date birthday;
+
+    private int credits;
 
 }
