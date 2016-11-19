@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Valeriy Knyazhev valeriy.knyazhev@yandex.ru
@@ -28,7 +26,7 @@ public class Course {
 
     private ArrayList<Course> requiredCompletedCourses;
 
-    private Professor professor;
+    private ArrayList<Professor> professors;
 
     private ArrayList<Task> tasks;
 
