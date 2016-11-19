@@ -26,4 +26,6 @@ public class Student extends User {
 
     private int credits;
 
+    private Plan plan;
+
 }
