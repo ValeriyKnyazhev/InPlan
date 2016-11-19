@@ -30,4 +30,6 @@ public class Course {
 
     private Professor professor;
 
+    private ArrayList<Task> tasks;
+
 }
