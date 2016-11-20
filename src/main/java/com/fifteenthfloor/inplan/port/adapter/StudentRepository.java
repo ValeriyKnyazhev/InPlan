@@ -11,6 +11,6 @@ public interface StudentRepository {
 
     public ArrayList<Student> getAllStudents();
 
-    public ArrayList<Student> getStudentByLastName(String lastname);
+    public ArrayList<Student> getStudentsByLastName(String lastname);
 
 }

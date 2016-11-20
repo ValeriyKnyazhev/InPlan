@@ -1,9 +1,7 @@
 package com.fifteenthfloor.inplan.domain.model;
 
-import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
