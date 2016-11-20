@@ -1,4 +1,4 @@
-package com.fifteenthfloor.inplan.port.adapter;
+package com.fifteenthfloor.inplan.domain.model;
 
 import com.fifteenthfloor.inplan.domain.model.Student;
 

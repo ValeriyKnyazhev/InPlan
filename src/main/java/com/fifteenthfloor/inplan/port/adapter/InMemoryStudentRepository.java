@@ -3,15 +3,15 @@ package com.fifteenthfloor.inplan.port.adapter;
 import com.fifteenthfloor.inplan.domain.model.Plan;
 import com.fifteenthfloor.inplan.domain.model.Sex;
 import com.fifteenthfloor.inplan.domain.model.Student;
+import com.fifteenthfloor.inplan.domain.model.StudentRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Valeriy Knyazhev valeriy.knyazhev@yandex.ru
  */
+@Repository
 public class InMemoryStudentRepository implements StudentRepository {
 
     private Set<Student> students = new HashSet<>();
@@ -21,7 +21,8 @@ public class InMemoryStudentRepository implements StudentRepository {
     }
 
     private void loadStudents() {
-        this.students.add(new Student("Vasiliy", "Aleksandrovich", "Pupkin", Sex.Male, new Date(397382738L), 1000, new Plan()));
+        this.students.add(new Student("Vasiliy", "Aleksandrovich", "Pupkin", Sex.Male, new Date(46746747642342L), 1000, new Plan()));
+        this.students.add(new Student("Vladimir", "Vladimirovich", "Putin", Sex.Male, new Date(4868968992427L), 999000, new Plan()));
     }
 
     @Override
