@@ -51,6 +51,9 @@ public class StudentResource {
     }
 
     @GetMapping(value = "/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
+    /*
+    GET /students/3
+     */
     @ResponseBody
     public ResponseEntity<Object> getStudent(@PathVariable long id) {
         Student student = this.studentRepository.getStudent(id);
