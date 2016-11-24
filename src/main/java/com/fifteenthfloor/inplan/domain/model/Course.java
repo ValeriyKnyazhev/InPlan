@@ -28,6 +28,4 @@ public class Course {
 
     private ArrayList<Professor> professors;
 
-    private ArrayList<Task> tasks;
-
 }

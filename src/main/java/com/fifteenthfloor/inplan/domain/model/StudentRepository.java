@@ -9,8 +9,10 @@ import java.util.ArrayList;
  */
 public interface StudentRepository {
 
-    public ArrayList<Student> getAllStudents();
+    ArrayList<Student> getAllStudents();
 
-    public ArrayList<Student> getStudentsByLastName(String lastname);
+    ArrayList<Student> getStudentsByLastName(String lastname);
+
+    Student getStudent(long id);
 
 }

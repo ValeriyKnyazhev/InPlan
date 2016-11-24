@@ -1,9 +1,6 @@
 package com.fifteenthfloor.inplan.port.adapter;
 
-import com.fifteenthfloor.inplan.domain.model.Plan;
-import com.fifteenthfloor.inplan.domain.model.Sex;
-import com.fifteenthfloor.inplan.domain.model.Student;
-import com.fifteenthfloor.inplan.domain.model.StudentRepository;
+import com.fifteenthfloor.inplan.domain.model.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -21,8 +18,8 @@ public class InMemoryStudentRepository implements StudentRepository {
     }
 
     private void loadStudents() {
-        this.students.add(new Student("Vasiliy", "Aleksandrovich", "Pupkin", Sex.Male, new Date(46746747642342L), 1000, new Plan()));
-        this.students.add(new Student("Vladimir", "Vladimirovich", "Putin", Sex.Male, new Date(4868968992427L), 999000, new Plan()));
+        this.students.add(new Student("Vasiliy", "Aleksandrovich", "Pupkin", "pupkinap", "pupkinap@mail.com", "jk3g2ged329i32ye", Sex.Male, new Date(46746747642342L), 1000, new Plan()));
+        this.students.add(new Student("Vladimir", "Vladimirovich", "Putin", "putinvv", "putinvv@mail.com", "ji4rjnfuf", Sex.Male, new Date(4868968992427L), 999000, new Plan()));
     }
 
     @Override
@@ -39,6 +36,11 @@ public class InMemoryStudentRepository implements StudentRepository {
             }
         }
         return students;
+    }
+
+    @Override
+    public Student getStudent(long id) {
+        return this.students.stream().filter(st -> id == st.getId()).findFirst().orElse(null);
     }
 
 }
