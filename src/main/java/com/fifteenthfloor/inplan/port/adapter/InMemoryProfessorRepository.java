@@ -14,7 +14,7 @@ import java.util.Set;
 @Repository
 public class InMemoryProfessorRepository implements ProfessorRepository {
 
-    private Set<Professor> professors = new HashSet<> ();
+    private Set<Professor> professors = new HashSet<>();
 
     public InMemoryProfessorRepository() {
         loadProfessors();

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
@@ -30,8 +31,11 @@ public class StudentResource {
      */
     @ResponseBody
     public ResponseEntity<Object> getAllStudents() {
-        ArrayList<Student> students = this.studentRepository.getAllStudents();
-        if (students != null) {
+        List<StudentModel> students = new ArrayList<>();
+        for (Student student : this.studentRepository.getAllStudents()) {
+            students.add(new StudentModel(student));
+        }
+        if (!students.isEmpty()) {
             return ResponseEntity.ok(students);
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Students not found");
@@ -43,8 +47,11 @@ public class StudentResource {
      */
     @ResponseBody
     public ResponseEntity<Object> getStudentByLastname(@RequestParam(value = "lastname") String lastname) {
-        ArrayList<Student> students = this.studentRepository.getStudentsByLastName(lastname);
-        if (students != null) {
+        List<StudentModel> students = new ArrayList<>();
+        for (Student student : this.studentRepository.getStudentsByLastName(lastname)) {
+            students.add(new StudentModel(student));
+        }
+        if (!students.isEmpty()) {
             return ResponseEntity.ok(students);
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Students by name " + lastname + " not found");
@@ -58,7 +65,7 @@ public class StudentResource {
     public ResponseEntity<Object> getStudent(@PathVariable long id) {
         Student student = this.studentRepository.getStudent(id);
         if (student != null) {
-            return ResponseEntity.ok(student);
+            return ResponseEntity.ok(new StudentModel(student));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student by id " + id + " not found");
     }
