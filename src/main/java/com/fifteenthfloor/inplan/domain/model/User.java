@@ -11,18 +11,15 @@ abstract class User {
 
     private long id;
 
-    @Getter(AccessLevel.PUBLIC)
     private String login;
 
-    @Getter(AccessLevel.PROTECTED)
     private String passwordHash;
 
-    @Getter(AccessLevel.PUBLIC)
     private String email;
 
     private static long currentId = 0;
 
-    public User(String login, String passwordHash, String email) {
+    public User(String login, String email, String passwordHash) {
         this.id = currentId++;
         setEmail(email);
         setLogin(login);

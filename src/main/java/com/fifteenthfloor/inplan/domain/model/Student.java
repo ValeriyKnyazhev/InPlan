@@ -40,16 +40,4 @@ public class Student extends User {
         setPlan(plan);
     }
 
-    public long getId() {
-        return super.getId();
-    }
-
-    public String getLogin() {
-        return super.getLogin();
-    }
-
-    public String getEmail() {
-        return super.getEmail();
-    }
-
 }
