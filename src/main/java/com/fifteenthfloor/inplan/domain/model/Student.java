@@ -28,4 +28,28 @@ public class Student extends User {
 
     private Plan plan;
 
+    public Student(String firstname, String middlename, String lastname, String login, String email, String passwordHash,
+                   Sex sex, Date birthday, int credits, Plan plan) {
+        super(login, email, passwordHash);
+        setFirstname(firstname);
+        setMiddlename(middlename);
+        setLastname(lastname);
+        setSex(sex);
+        setBirthday(birthday);
+        setCredits(credits);
+        setPlan(plan);
+    }
+
+    public long getId() {
+        return super.getId();
+    }
+
+    public String getLogin() {
+        return super.getLogin();
+    }
+
+    public String getEmail() {
+        return super.getEmail();
+    }
+
 }
