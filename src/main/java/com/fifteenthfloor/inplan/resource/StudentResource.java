@@ -42,12 +42,22 @@ public class StudentResource {
     GET /students?lastname=Lastname
      */
     @ResponseBody
-    public ResponseEntity<Object> getAccount(@RequestParam(value = "lastname") String lastname) {
+    public ResponseEntity<Object> getStudentByLastname(@RequestParam(value = "lastname") String lastname) {
         ArrayList<Student> students = this.studentRepository.getStudentsByLastName(lastname);
         if (students != null) {
             return ResponseEntity.ok(students);
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Students not found");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Students by name " + lastname + " not found");
+    }
+
+    @GetMapping(value = "/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @ResponseBody
+    public ResponseEntity<Object> getStudent(@PathVariable long id) {
+        Student student = this.studentRepository.getStudent(id);
+        if (student != null) {
+            return ResponseEntity.ok(student);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student by id " + id + " not found");
     }
 
 }
