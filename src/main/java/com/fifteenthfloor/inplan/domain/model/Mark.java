@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * @author Valeriy Knyazhev valeriy.knyazhev@yandex.ru
  */
@@ -18,9 +20,18 @@ public class Mark {
 
     private Student student;
 
-    public Mark(int value, Student student) {
+    private Professor professor;
+
+    private Date date;
+
+    private String description;
+
+    public Mark(int value, Student student, Professor professor, Date date, String description) {
         setStudent(student);
+        setProfessor(professor);
         setValue(value);
+        setDate(date);
+        setDescription(description);
     }
 
     public Student getStudent() {
@@ -31,8 +42,24 @@ public class Mark {
         return this.value;
     }
 
+    public Professor getProfessor() {
+        return this.professor;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
     public void setValue(int value) throws NotValidMarkException{
@@ -41,6 +68,14 @@ public class Mark {
         } else {
             throw new NotValidMarkException("Not correct value.");
         }
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }
