@@ -5,8 +5,7 @@ import com.fifteenthfloor.inplan.domain.model.ProfessorRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author Valeriy Knyazhev
@@ -14,7 +13,7 @@ import java.util.Set;
 @Repository
 public class InMemoryProfessorRepository implements ProfessorRepository {
 
-    private Set<Professor> professors = new HashSet<>();
+    private List<Professor> professors = new ArrayList<>();
 
     public InMemoryProfessorRepository() {
         loadProfessors();

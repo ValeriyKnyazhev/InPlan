@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
@@ -32,8 +33,11 @@ public class ProfessorResource {
      */
     @ResponseBody
     public ResponseEntity<Object> getAllStudents() {
-        ArrayList<Professor> professors = this.professorRepository.getAllProfessors();
-        if (professors != null) {
+        List<ProfessorModel> professors = new ArrayList<>();
+        for (Professor professor : this.professorRepository.getAllProfessors()) {
+            professors.add(new ProfessorModel(professor));
+        }
+        if (!professors.isEmpty()) {
             return ResponseEntity.ok(professors);
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professors not found");
@@ -45,8 +49,11 @@ public class ProfessorResource {
      */
     @ResponseBody
     public ResponseEntity<Object> getStudentByLastname(@RequestParam(value = "lastname") String lastname) {
-        ArrayList<Professor> professors = this.professorRepository.getProfessorsByLastName(lastname);
-        if (professors != null) {
+        List<ProfessorModel> professors = new ArrayList<>();
+        for (Professor professor : this.professorRepository.getProfessorsByLastName(lastname)) {
+            professors.add(new ProfessorModel(professor));
+        }
+        if (!professors.isEmpty()) {
             return ResponseEntity.ok(professors);
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professors by name " + lastname + " not found");
@@ -60,7 +67,7 @@ public class ProfessorResource {
     public ResponseEntity<Object> getStudent(@PathVariable long id) {
         Professor professor = this.professorRepository.getProfessor(id);
         if (professor != null) {
-            return ResponseEntity.ok(professor);
+            return ResponseEntity.ok(new ProfessorModel(professor));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professor by id " + id + " not found");
     }

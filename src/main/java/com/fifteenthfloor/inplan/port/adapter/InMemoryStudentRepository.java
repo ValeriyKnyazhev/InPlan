@@ -11,7 +11,7 @@ import java.util.*;
 @Repository
 public class InMemoryStudentRepository implements StudentRepository {
 
-    private Set<Student> students = new HashSet<>();
+    private List<Student> students = new ArrayList<>();
 
     public InMemoryStudentRepository() {
         loadStudents();
