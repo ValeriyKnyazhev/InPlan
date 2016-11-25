@@ -21,7 +21,10 @@ public class InMemoryProfessorRepository implements ProfessorRepository {
     }
 
     private void loadProfessors() {
-        this.professors.add(new Professor());
+        this.professors.add(new Professor("Ivan", "Ivanovich", "Professorov", "professorov_ii", "professorov_ii@mail.com", "78giu21eej92eue"));
+        this.professors.add(new Professor("Lidia", "Valentinovna", "Kuzmicheva", "kuzmicheva", "kuzmicheva@mail.com", "8mu32u39832"));
+        this.professors.add(new Professor("Aleksandr", "Sergeevich", "Kotov", "kotov", "kotov@mail.com", "321xu09eux091r3"));
+        this.professors.add(new Professor("Svetlana", "Valerievna", "Ingerova", "inger_svet", "inger_svet@mail.com", "3xur093rc3kfo"));
     }
 
     @Override

@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StudentModel {
 
+    private long id;
+
     private String firstname;
 
     private String middlename;
@@ -27,6 +29,7 @@ public class StudentModel {
     private String email;
 
     public StudentModel(Student student) {
+        setId(student.getId());
         setFirstname(student.getFirstname());
         setMiddlename(student.getMiddlename());
         setLastname(student.getLastname());
