@@ -17,18 +17,18 @@ public class Plan {
 
     private long id;
 
-    private Set<Course> courses;
+    private Set<Long> courses;
 
     Plan(long id) {
         courses = new HashSet<>();
         setId(id);
     }
 
-    public void addCourse(Course course) {
+    public void addCourse(long course) {
         this.courses.add(course);
     }
 
-    void removeCourse(Course course) {
+    void removeCourse(long course) {
         this.courses.remove(course);
     }
 

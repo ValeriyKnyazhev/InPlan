@@ -24,8 +24,8 @@ public class Course {
 
     private StudyArea studyArea;
 
-    private ArrayList<Course> requiredCompletedCourses;
+    private ArrayList<Long> requiredCompletedCourses;
 
-    private ArrayList<Professor> professors;
+    private ArrayList<Long> professors;
 
 }

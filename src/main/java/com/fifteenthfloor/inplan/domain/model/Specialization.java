@@ -16,9 +16,9 @@ public class Specialization {
 
     private int minExtraCoursesCount;
 
-    private ArrayList<Course> requiredCourses;
+    private ArrayList<Long> requiredCourses;
 
-    public Specialization(String label, int coursesCount, ArrayList<Course> requiredCourses) {
+    public Specialization(String label, int coursesCount, ArrayList<Long> requiredCourses) {
         setLabel(label);
         setMinExtraCoursesCount(coursesCount);
         setRequiredCourses(requiredCourses);
@@ -32,7 +32,7 @@ public class Specialization {
         return this.minExtraCoursesCount;
     }
 
-    public ArrayList<Course> getRequiredCourses() {
+    public ArrayList<Long> getRequiredCourses() {
         return this.requiredCourses;
     }
 
@@ -48,7 +48,7 @@ public class Specialization {
         }
     }
 
-    public void setRequiredCourses(ArrayList<Course> requiredCourses) {
+    public void setRequiredCourses(ArrayList<Long> requiredCourses) {
         this.requiredCourses = requiredCourses;
     }
 

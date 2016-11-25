@@ -19,6 +19,6 @@ public class Task {
 
     private String description;
 
-    private ArrayList<Mark> marks;
+    private ArrayList<Long> marks;
 
 }

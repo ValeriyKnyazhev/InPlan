@@ -18,15 +18,15 @@ public class Mark {
 
     private int value;
 
-    private Student student;
+    private long student;
 
-    private Professor professor;
+    private long professor;
 
     private Date date;
 
     private String description;
 
-    public Mark(int value, Student student, Professor professor, Date date, String description) {
+    public Mark(int value, long student, long professor, Date date, String description) {
         setStudent(student);
         setProfessor(professor);
         setValue(value);
@@ -34,7 +34,7 @@ public class Mark {
         setDescription(description);
     }
 
-    public Student getStudent() {
+    public long getStudent() {
         return this.student;
     }
 
@@ -42,7 +42,7 @@ public class Mark {
         return this.value;
     }
 
-    public Professor getProfessor() {
+    public long getProfessor() {
         return this.professor;
     }
 
@@ -54,11 +54,11 @@ public class Mark {
         return this.description;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(long student) {
         this.student = student;
     }
 
-    public void setProfessor(Professor professor) {
+    public void setProfessor(long professor) {
         this.professor = professor;
     }
 
