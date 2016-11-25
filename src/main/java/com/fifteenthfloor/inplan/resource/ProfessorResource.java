@@ -32,7 +32,7 @@ public class ProfessorResource {
     GET /professors/all
      */
     @ResponseBody
-    public ResponseEntity<Object> getAllStudents() {
+    public ResponseEntity<Object> getAllProfessors() {
         List<ProfessorModel> professors = new ArrayList<>();
         for (Professor professor : this.professorRepository.getAllProfessors()) {
             professors.add(new ProfessorModel(professor));
@@ -48,7 +48,7 @@ public class ProfessorResource {
     GET /professors?lastname=Lastname
      */
     @ResponseBody
-    public ResponseEntity<Object> getStudentByLastname(@RequestParam(value = "lastname") String lastname) {
+    public ResponseEntity<Object> getProfessorsByLastname(@RequestParam(value = "lastname") String lastname) {
         List<ProfessorModel> professors = new ArrayList<>();
         for (Professor professor : this.professorRepository.getProfessorsByLastName(lastname)) {
             professors.add(new ProfessorModel(professor));
@@ -64,7 +64,7 @@ public class ProfessorResource {
     GET /professors/2
      */
     @ResponseBody
-    public ResponseEntity<Object> getStudent(@PathVariable long id) {
+    public ResponseEntity<Object> getProfessor(@PathVariable long id) {
         Professor professor = this.professorRepository.getProfessor(id);
         if (professor != null) {
             return ResponseEntity.ok(new ProfessorModel(professor));
