@@ -2,6 +2,7 @@ package com.fifteenthfloor.inplan.port.adapter;
 
 import com.fifteenthfloor.inplan.domain.model.Deanery;
 import com.fifteenthfloor.inplan.domain.model.DeaneryRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * @author Valeriy Knyazhev
  */
+@Repository
 public class InMemoryDeaneryRepository implements DeaneryRepository {
 
     private List<Deanery> deaneries = new ArrayList<>();
@@ -28,7 +30,7 @@ public class InMemoryDeaneryRepository implements DeaneryRepository {
     }
 
     @Override
-    public ArrayList<Deanery> getDeaneriesByLastName(String label) {
+    public ArrayList<Deanery> getDeaneriesByLabel(String label) {
         ArrayList<Deanery> deaneries = new ArrayList<>();
         for (Deanery deanery : this.deaneries) {
             if (deanery.getLabel().equals(label)) {

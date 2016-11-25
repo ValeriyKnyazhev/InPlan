@@ -72,5 +72,4 @@ public class ProfessorResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professor by id " + id + " not found");
     }
 
-
 }

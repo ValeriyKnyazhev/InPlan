@@ -9,7 +9,7 @@ public interface DeaneryRepository {
 
     ArrayList<Deanery> getAllDeaneries();
 
-    ArrayList<Deanery> getDeaneriesByLastName(String label);
+    ArrayList<Deanery> getDeaneriesByLabel(String label);
 
     Deanery getDeanery(long id);
 
