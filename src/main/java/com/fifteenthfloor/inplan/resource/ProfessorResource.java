@@ -43,6 +43,22 @@ public class ProfessorResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professors not found");
     }
 
+    @GetMapping(value = "/id/all", produces = {APPLICATION_JSON_UTF8_VALUE})
+    /*
+    GET /professors/id/all
+     */
+    @ResponseBody
+    public ResponseEntity<Object> getAllIdProfessors() {
+        List<Long> professors = new ArrayList<>();
+        for (Professor professor : this.professorRepository.getAllProfessors()) {
+            professors.add(professor.getId());
+        }
+        if (!professors.isEmpty()) {
+            return ResponseEntity.ok(professors);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professors not found");
+    }
+
     @GetMapping(produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
     GET /professors?lastname=Lastname
@@ -52,6 +68,22 @@ public class ProfessorResource {
         List<ProfessorModel> professors = new ArrayList<>();
         for (Professor professor : this.professorRepository.getProfessorsByLastName(lastname)) {
             professors.add(new ProfessorModel(professor));
+        }
+        if (!professors.isEmpty()) {
+            return ResponseEntity.ok(professors);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professors by name " + lastname + " not found");
+    }
+
+    @GetMapping(value = "/id", produces = {APPLICATION_JSON_UTF8_VALUE})
+    /*
+    GET /professors/id?lastname=Lastname
+     */
+    @ResponseBody
+    public ResponseEntity<Object> getIdProfessorsByLastname(@RequestParam(value = "lastname") String lastname) {
+        List<Long> professors = new ArrayList<>();
+        for (Professor professor : this.professorRepository.getProfessorsByLastName(lastname)) {
+            professors.add(professor.getId());
         }
         if (!professors.isEmpty()) {
             return ResponseEntity.ok(professors);

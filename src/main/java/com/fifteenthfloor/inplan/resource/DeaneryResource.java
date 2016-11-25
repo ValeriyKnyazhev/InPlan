@@ -91,7 +91,7 @@ public class DeaneryResource {
 
     @GetMapping(value = "/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /deaneries/2
+    GET /deaneries/1
      */
     @ResponseBody
     public ResponseEntity<Object> getDeanery(@PathVariable long id) {
