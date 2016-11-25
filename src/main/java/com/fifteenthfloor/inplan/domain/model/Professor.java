@@ -14,8 +14,15 @@ public class Professor extends User {
 
     private String firstname;
 
-    private String midlename;
+    private String middlename;
 
     private String lastname;
+
+    public Professor(String firstname, String middlename, String lastname, String login, String email, String passwordHash) {
+        super(login, email, passwordHash);
+        setFirstname(firstname);
+        setMiddlename(middlename);
+        setLastname(lastname);
+    }
 
 }

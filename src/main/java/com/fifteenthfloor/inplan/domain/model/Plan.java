@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Valeriy Knyazhev valeriy.knyazhev@yandex.ru
@@ -14,6 +15,21 @@ import java.util.ArrayList;
 @NoArgsConstructor
 public class Plan {
 
-    private ArrayList<Course> courses;
+    private long id;
+
+    private Set<Course> courses;
+
+    Plan(long id) {
+        courses = new HashSet<>();
+        setId(id);
+    }
+
+    public void addCourse(Course course) {
+        this.courses.add(course);
+    }
+
+    void removeCourse(Course course) {
+        this.courses.remove(course);
+    }
 
 }

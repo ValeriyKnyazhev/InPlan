@@ -2,25 +2,28 @@ package com.fifteenthfloor.inplan.port.adapter;
 
 import com.fifteenthfloor.inplan.domain.model.Professor;
 import com.fifteenthfloor.inplan.domain.model.ProfessorRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author Valeriy Knyazhev
  */
+@Repository
 public class InMemoryProfessorRepository implements ProfessorRepository {
 
-    private Set<Professor> professors = new HashSet<> ();
+    private List<Professor> professors = new ArrayList<>();
 
     public InMemoryProfessorRepository() {
         loadProfessors();
     }
 
     private void loadProfessors() {
-        this.professors.add(new Professor());
-        this.professors.add(new Professor());
+        this.professors.add(new Professor("Ivan", "Ivanovich", "Professorov", "professorov_ii", "professorov_ii@mail.com", "78giu21eej92eue"));
+        this.professors.add(new Professor("Lidia", "Valentinovna", "Kuzmicheva", "kuzmicheva", "kuzmicheva@mail.com", "8mu32u39832"));
+        this.professors.add(new Professor("Aleksandr", "Sergeevich", "Kotov", "kotov", "kotov@mail.com", "321xu09eux091r3"));
+        this.professors.add(new Professor("Svetlana", "Valerievna", "Ingerova", "inger_svet", "inger_svet@mail.com", "3xur093rc3kfo"));
     }
 
     @Override
