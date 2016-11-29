@@ -4,7 +4,9 @@ import com.fifteenthfloor.inplan.domain.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author Valeriy Knyazhev valeriy.knyazhev@yandex.ru
@@ -12,12 +14,12 @@ import java.util.*;
 @Repository
 public class InMemoryStudentRepository implements StudentRepository {
 
-    private List<Student> students = new ArrayList<>();
-
     @Autowired
     PlanRepository planRepository;
+    private List<Student> students = new ArrayList<>();
 
-    public InMemoryStudentRepository() {
+    public InMemoryStudentRepository(PlanRepository planRepository) {
+        this.planRepository = planRepository;
         loadStudents();
     }
 
@@ -61,7 +63,7 @@ public class InMemoryStudentRepository implements StudentRepository {
     public void createStudent(Student student) {
         if (getStudent(student.getId()) == null) {
             this.students.add(student);
-            planRepository.createPlan(new Plan(student.getPlan()));
+            this.planRepository.createPlan(new Plan(student.getPlan()));
         }
     }
 

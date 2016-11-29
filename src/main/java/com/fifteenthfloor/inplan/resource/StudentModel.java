@@ -38,7 +38,7 @@ public class StudentModel {
         setSex(student.getSex());
         setLogin(student.getLogin());
         setEmail(student.getEmail());
-        setPlan(plan);
+        setPlan(student.getPlan());
     }
 
 }

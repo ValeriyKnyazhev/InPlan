@@ -37,7 +37,7 @@ public class Student extends User {
         setSex(sex);
         setBirthday(birthday);
         setCredits(credits);
-        setPlan(getId());
+        setPlan(super.getId());
     }
 
 }

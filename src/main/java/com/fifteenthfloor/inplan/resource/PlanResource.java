@@ -2,13 +2,11 @@ package com.fifteenthfloor.inplan.resource;
 
 import com.fifteenthfloor.inplan.domain.model.Plan;
 import com.fifteenthfloor.inplan.domain.model.PlanRepository;
-import com.fifteenthfloor.inplan.domain.model.Student;
 import lombok.NonNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +27,7 @@ public class PlanResource {
 
     @GetMapping(value = "/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /plans/1
+    GET /plans/11
      */
     @ResponseBody
     public ResponseEntity<Object> getPlan(@PathVariable long id) {
@@ -40,9 +38,9 @@ public class PlanResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plan by id " + id + " not found");
     }
 
-    @GetMapping(value = "/id", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/courses/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /plans/courses/{id}
+    GET /plans/courses/11
      */
     @ResponseBody
     public ResponseEntity<Object> getIdStudentByLastname(@PathVariable long id) {
