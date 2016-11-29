@@ -14,6 +14,8 @@ import java.util.ArrayList;
 @NoArgsConstructor
 public class Course {
 
+    private long id;
+
     private String label;
 
     private int creditsPrice;
