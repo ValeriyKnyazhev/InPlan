@@ -15,4 +15,6 @@ public interface StudentRepository {
 
     Student getStudent(long id);
 
+    void createStudent(Student student);
+
 }

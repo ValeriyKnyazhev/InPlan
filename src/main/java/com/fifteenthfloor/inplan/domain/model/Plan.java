@@ -19,7 +19,7 @@ public class Plan {
 
     private Set<Long> courses;
 
-    Plan(long id) {
+    public Plan(long id) {
         courses = new HashSet<>();
         setId(id);
     }

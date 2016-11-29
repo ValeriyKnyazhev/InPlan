@@ -11,4 +11,6 @@ public interface PlanRepository {
 
     Set<Long> getPlanCourses(long id);
 
+    void createPlan(Plan plan);
+
 }
