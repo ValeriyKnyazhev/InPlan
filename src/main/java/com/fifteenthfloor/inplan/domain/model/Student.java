@@ -26,7 +26,7 @@ public class Student extends User {
 
     private int credits;
 
-    private Plan plan;
+    private long plan;
 
     public Student(String firstname, String middlename, String lastname, String login, String email, String passwordHash,
                    Sex sex, Date birthday, int credits) {
@@ -37,7 +37,7 @@ public class Student extends User {
         setSex(sex);
         setBirthday(birthday);
         setCredits(credits);
-        setPlan(new Plan(getId()));
+        setPlan(super.getId());
     }
 
 }

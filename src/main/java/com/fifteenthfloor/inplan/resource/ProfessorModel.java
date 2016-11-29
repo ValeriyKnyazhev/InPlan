@@ -21,11 +21,17 @@ public class ProfessorModel {
 
     private String lastname;
 
+    private String login;
+
+    private String email;
+
     public ProfessorModel(Professor professor) {
         setId(professor.getId());
         setFirstname(professor.getFirstname());
         setMiddlename(professor.getMiddlename());
         setLastname(professor.getLastname());
+        setLogin(professor.getLogin());
+        setEmail(professor.getEmail());
     }
 
 }

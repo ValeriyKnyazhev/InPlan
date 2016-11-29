@@ -28,6 +28,8 @@ public class StudentModel {
 
     private String email;
 
+    private long plan;
+
     public StudentModel(Student student) {
         setId(student.getId());
         setFirstname(student.getFirstname());
@@ -36,6 +38,7 @@ public class StudentModel {
         setSex(student.getSex());
         setLogin(student.getLogin());
         setEmail(student.getEmail());
+        setPlan(student.getPlan());
     }
 
 }

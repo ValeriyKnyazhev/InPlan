@@ -14,4 +14,10 @@ public class Deanery extends User {
 
     private String label;
 
+    public Deanery(String label, String login, String email, String passwordHash) {
+        super(login, email, passwordHash);
+        setLabel(label);
+    }
+
+
 }

@@ -17,7 +17,7 @@ abstract class User {
 
     private String email;
 
-    private static long currentId = 0;
+    private static long currentId = 1;
 
     public User(String login, String email, String passwordHash) {
         this.id = currentId++;
