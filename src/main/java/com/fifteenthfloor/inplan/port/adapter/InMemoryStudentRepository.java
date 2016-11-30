@@ -15,7 +15,8 @@ import java.util.List;
 public class InMemoryStudentRepository implements StudentRepository {
 
     @Autowired
-    PlanRepository planRepository;
+    private PlanRepository planRepository;
+
     private List<Student> students = new ArrayList<>();
 
     public InMemoryStudentRepository(PlanRepository planRepository) {
