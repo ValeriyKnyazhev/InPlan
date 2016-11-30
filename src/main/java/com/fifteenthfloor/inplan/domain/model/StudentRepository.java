@@ -1,7 +1,5 @@
 package com.fifteenthfloor.inplan.domain.model;
 
-import com.fifteenthfloor.inplan.domain.model.Student;
-
 import java.util.ArrayList;
 
 /**
@@ -15,6 +13,6 @@ public interface StudentRepository {
 
     Student getStudent(long id);
 
-    void createStudent(Student student);
+    void createStudent(Student student, long specialization);
 
 }

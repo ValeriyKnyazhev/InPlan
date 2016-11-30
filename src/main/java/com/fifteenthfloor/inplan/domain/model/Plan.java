@@ -19,9 +19,12 @@ public class Plan {
 
     private Set<Long> courses;
 
-    public Plan(long id) {
+    private long specialization;
+
+    public Plan(long id, long specialization) {
         courses = new HashSet<>();
         setId(id);
+        setSpecialization(specialization);
     }
 
     public void addCourse(long course) {
