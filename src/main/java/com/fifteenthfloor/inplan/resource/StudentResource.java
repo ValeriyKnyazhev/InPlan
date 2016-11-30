@@ -41,9 +41,9 @@ public class StudentResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Students not found");
     }
 
-    @GetMapping(value = "/id/all", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/all/id", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /students/id/all
+    GET /students/all/id
      */
     @ResponseBody
     public ResponseEntity<Object> getAllIdStudents() {
@@ -57,12 +57,12 @@ public class StudentResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Students not found");
     }
 
-    @GetMapping(produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/lastname/{lastname}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /students?lastname=Lastname
+    GET /students/lastname/Lastname
      */
     @ResponseBody
-    public ResponseEntity<Object> getStudentsByLastname(@RequestParam(value = "lastname") String lastname) {
+    public ResponseEntity<Object> getStudentsByLastname(@PathVariable String lastname) {
         List<StudentModel> students = new ArrayList<>();
         for (Student student : this.studentRepository.getStudentsByLastName(lastname)) {
             students.add(new StudentModel(student));
@@ -73,12 +73,12 @@ public class StudentResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Students by name " + lastname + " not found");
     }
 
-    @GetMapping(value = "/id", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/lastname/id/{lastname}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /students/id?lastname=Lastname
+    GET /students/lastname/id/Lastname
      */
     @ResponseBody
-    public ResponseEntity<Object> getIdStudentsByLastname(@RequestParam(value = "lastname") String lastname) {
+    public ResponseEntity<Object> getIdStudentsByLastname(@PathVariable String lastname) {
         List<Long> students = new ArrayList<>();
         for (Student student : this.studentRepository.getStudentsByLastName(lastname)) {
             students.add(student.getId());
@@ -89,9 +89,9 @@ public class StudentResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Students by name " + lastname + " not found");
     }
 
-    @GetMapping(value = "/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/id/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /students/3
+    GET /students/id/3
      */
     @ResponseBody
     public ResponseEntity<Object> getStudent(@PathVariable long id) {

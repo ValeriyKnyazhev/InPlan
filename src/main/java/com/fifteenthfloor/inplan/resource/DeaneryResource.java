@@ -41,9 +41,9 @@ public class DeaneryResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Deaneries not found");
     }
 
-    @GetMapping(value = "/id/all", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/all/id", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /deaneries/id/all
+    GET /deaneries/all/id
      */
     @ResponseBody
     public ResponseEntity<Object> getAllIdDeaneries() {
@@ -57,12 +57,12 @@ public class DeaneryResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Deaneries not found");
     }
 
-    @GetMapping(produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/label/{label}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /deaneries?label=Label
+    GET /deaneries/label/Label
      */
     @ResponseBody
-    public ResponseEntity<Object> getDeaneriesByLabel(@RequestParam(value = "label") String label) {
+    public ResponseEntity<Object> getDeaneriesByLabel(@PathVariable String label) {
         List<DeaneryModel> deaneries = new ArrayList<>();
         for (Deanery deanery : this.deaneryRepository.getDeaneriesByLabel(label)) {
             deaneries.add(new DeaneryModel(deanery));
@@ -73,12 +73,12 @@ public class DeaneryResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Deaneries by name " + label + " not found");
     }
 
-    @GetMapping(value = "/id",produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/label/id/{label}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /deaneries/id?label=Label
+    GET /deaneries/label/id/Label
      */
     @ResponseBody
-    public ResponseEntity<Object> getIdDeaneriesByLabel(@RequestParam(value = "label") String label) {
+    public ResponseEntity<Object> getIdDeaneriesByLabel(@PathVariable String label) {
         List<Long> deaneries = new ArrayList<>();
         for (Deanery deanery : this.deaneryRepository.getDeaneriesByLabel(label)) {
             deaneries.add(deanery.getId());
@@ -89,9 +89,9 @@ public class DeaneryResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Deaneries by name " + label + " not found");
     }
 
-    @GetMapping(value = "/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/id/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /deaneries/1
+    GET /deaneries/id/1
      */
     @ResponseBody
     public ResponseEntity<Object> getDeanery(@PathVariable long id) {

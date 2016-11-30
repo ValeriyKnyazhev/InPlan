@@ -22,9 +22,9 @@ public class PlanResource {
         this.planRepository = planRepository;
     }
 
-    @GetMapping(value = "/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/id/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /plans/11
+    GET /plans/id/11
      */
     @ResponseBody
     public ResponseEntity<Object> getPlan(@PathVariable long id) {
@@ -35,9 +35,9 @@ public class PlanResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plan by id " + id + " not found");
     }
 
-    @GetMapping(value = "/courses/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/courses/id/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /plans/courses/11
+    GET /plans/courses/id/11
      */
     @ResponseBody
     public ResponseEntity<Object> getCourses(@PathVariable long id) {

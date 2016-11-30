@@ -15,4 +15,6 @@ public interface StudentRepository {
 
     void createStudent(Student student, long specialization);
 
+    void createStudent(Student student, Long[] courses, long specialization);
+
 }
