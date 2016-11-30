@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,9 +20,18 @@ public class Plan {
 
     private Set<Long> courses;
 
-    public Plan(long id) {
-        courses = new HashSet<>();
+    private long specialization;
+
+    public Plan(long id, long specialization) {
+        this.courses = new HashSet<>();
         setId(id);
+        setSpecialization(specialization);
+    }
+
+    public Plan(long id, Long[] courses, long specialization) {
+        this.courses = new HashSet<Long>(Arrays.asList(courses));
+        setId(id);
+        setSpecialization(specialization);
     }
 
     public void addCourse(long course) {

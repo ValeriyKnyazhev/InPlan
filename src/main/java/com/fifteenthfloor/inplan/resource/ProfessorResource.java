@@ -2,8 +2,6 @@ package com.fifteenthfloor.inplan.resource;
 
 import com.fifteenthfloor.inplan.domain.model.Professor;
 import com.fifteenthfloor.inplan.domain.model.ProfessorRepository;
-import com.fifteenthfloor.inplan.domain.model.Student;
-import com.fifteenthfloor.inplan.domain.model.StudentRepository;
 import lombok.NonNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,9 +41,9 @@ public class ProfessorResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professors not found");
     }
 
-    @GetMapping(value = "/id/all", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/all/id", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /professors/id/all
+    GET /professors/all/id
      */
     @ResponseBody
     public ResponseEntity<Object> getAllIdProfessors() {
@@ -59,12 +57,12 @@ public class ProfessorResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professors not found");
     }
 
-    @GetMapping(produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/lastname/{lastname}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /professors?lastname=Lastname
+    GET /professors/lastname/Lastname
      */
     @ResponseBody
-    public ResponseEntity<Object> getProfessorsByLastname(@RequestParam(value = "lastname") String lastname) {
+    public ResponseEntity<Object> getProfessorsByLastname(@PathVariable String lastname) {
         List<ProfessorModel> professors = new ArrayList<>();
         for (Professor professor : this.professorRepository.getProfessorsByLastName(lastname)) {
             professors.add(new ProfessorModel(professor));
@@ -75,12 +73,12 @@ public class ProfessorResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professors by name " + lastname + " not found");
     }
 
-    @GetMapping(value = "/id", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "lastname/id/{lastname}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /professors/id?lastname=Lastname
+    GET /professors/lastname/id/Lastname
      */
     @ResponseBody
-    public ResponseEntity<Object> getIdProfessorsByLastname(@RequestParam(value = "lastname") String lastname) {
+    public ResponseEntity<Object> getIdProfessorsByLastname(@PathVariable String lastname) {
         List<Long> professors = new ArrayList<>();
         for (Professor professor : this.professorRepository.getProfessorsByLastName(lastname)) {
             professors.add(professor.getId());
@@ -91,9 +89,9 @@ public class ProfessorResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Professors by name " + lastname + " not found");
     }
 
-    @GetMapping(value = "/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/id/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
-    GET /professors/2
+    GET /professors/id/2
      */
     @ResponseBody
     public ResponseEntity<Object> getProfessor(@PathVariable long id) {
