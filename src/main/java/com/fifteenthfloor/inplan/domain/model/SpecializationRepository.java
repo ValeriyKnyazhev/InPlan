@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * @author Valeriy Knyazhev
  */
-public interface SpecializationResource {
+public interface SpecializationRepository {
 
     ArrayList<Specialization> getAllSpecializations();
 
