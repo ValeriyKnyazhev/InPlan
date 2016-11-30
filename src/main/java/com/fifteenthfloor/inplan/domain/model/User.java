@@ -1,6 +1,7 @@
 package com.fifteenthfloor.inplan.domain.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Valeriy Knyazhev valeriy.knyazhev@yandex.ru
@@ -9,15 +10,11 @@ import lombok.*;
 @NoArgsConstructor
 abstract class User {
 
-    private long id;
-
-    private String login;
-
-    private String passwordHash;
-
-    private String email;
-
     private static long currentId = 1;
+    private long id;
+    private String login;
+    private String passwordHash;
+    private String email;
 
     public User(String login, String email, String passwordHash) {
         this.id = currentId++;
@@ -29,6 +26,5 @@ abstract class User {
     public long getId() {
         return this.id;
     }
-
 
 }

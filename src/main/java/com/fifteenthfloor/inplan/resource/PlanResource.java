@@ -7,9 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 /**
@@ -43,13 +40,12 @@ public class PlanResource {
     GET /plans/courses/11
      */
     @ResponseBody
-    public ResponseEntity<Object> getIdStudentByLastname(@PathVariable long id) {
-        List<Long> courses = new ArrayList<>();
+    public ResponseEntity<Object> getCourses(@PathVariable long id) {
         Plan plan = this.planRepository.getPlan(id);
         if (plan != null) {
             return ResponseEntity.ok(plan.getCourses());
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("plan by id " + id + " not found");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plan by id " + id + " not found");
     }
 
 }

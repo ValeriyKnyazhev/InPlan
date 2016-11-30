@@ -13,7 +13,7 @@ public interface CourseRepository {
 
     ArrayList<Course> getCoursesByStudyArea(StudyArea studyArea);
 
-    ArrayList<Course> getCoursesByProfessor(Professor professor);
+    ArrayList<Course> getCoursesByProfessor(long professor);
 
     ArrayList<Course> getCoursesByMaxPrice(int creditsPrice);
 

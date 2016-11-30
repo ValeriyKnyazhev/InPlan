@@ -2,7 +2,6 @@ package com.fifteenthfloor.inplan.port.adapter;
 
 import com.fifteenthfloor.inplan.domain.model.Course;
 import com.fifteenthfloor.inplan.domain.model.CourseRepository;
-import com.fifteenthfloor.inplan.domain.model.Professor;
 import com.fifteenthfloor.inplan.domain.model.StudyArea;
 import org.springframework.stereotype.Repository;
 
@@ -72,10 +71,10 @@ public class InMemoryCourseRepository implements CourseRepository {
     }
 
     @Override
-    public ArrayList<Course> getCoursesByProfessor(Professor professor) {
+    public ArrayList<Course> getCoursesByProfessor(long professor) {
         ArrayList<Course> courses = new ArrayList<>();
         for (Course course : this.courses) {
-            if (course.getProfessors().contains(professor.getId())) {
+            if (course.getProfessors().contains(professor)) {
                 courses.add(course);
             }
         }

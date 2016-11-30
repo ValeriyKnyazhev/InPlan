@@ -62,7 +62,7 @@ public class StudentResource {
     GET /students?lastname=Lastname
      */
     @ResponseBody
-    public ResponseEntity<Object> getStudentByLastname(@RequestParam(value = "lastname") String lastname) {
+    public ResponseEntity<Object> getStudentsByLastname(@RequestParam(value = "lastname") String lastname) {
         List<StudentModel> students = new ArrayList<>();
         for (Student student : this.studentRepository.getStudentsByLastName(lastname)) {
             students.add(new StudentModel(student));
@@ -78,7 +78,7 @@ public class StudentResource {
     GET /students/id?lastname=Lastname
      */
     @ResponseBody
-    public ResponseEntity<Object> getIdStudentByLastname(@RequestParam(value = "lastname") String lastname) {
+    public ResponseEntity<Object> getIdStudentsByLastname(@RequestParam(value = "lastname") String lastname) {
         List<Long> students = new ArrayList<>();
         for (Student student : this.studentRepository.getStudentsByLastName(lastname)) {
             students.add(student.getId());
