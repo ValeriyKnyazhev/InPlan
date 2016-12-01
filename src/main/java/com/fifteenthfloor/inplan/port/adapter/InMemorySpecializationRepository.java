@@ -2,6 +2,7 @@ package com.fifteenthfloor.inplan.port.adapter;
 
 import com.fifteenthfloor.inplan.domain.model.Specialization;
 import com.fifteenthfloor.inplan.domain.model.SpecializationRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * @author Valeriy Knyazhev
  */
+@Repository
 public class InMemorySpecializationRepository implements SpecializationRepository {
 
     private List<Specialization> specializations = new ArrayList<>();
@@ -19,10 +21,10 @@ public class InMemorySpecializationRepository implements SpecializationRepositor
     }
 
     private void loadSpecializations() {
-        createSpecialization(new Specialization(1, "Applied Methematics", 3, new ArrayList<>(Arrays.asList(new Long[]{1L, 4L, 6L}))));
-        createSpecialization(new Specialization(2, "Applied Physics", 3, new ArrayList<>(Arrays.asList(new Long[]{1L, 4L, 6L}))));
-        createSpecialization(new Specialization(3, "ranslator\n", 3, new ArrayList<>(Arrays.asList(new Long[]{1L, 4L, 6L}))));
-        createSpecialization(new Specialization(4, "Medicine", 3, new ArrayList<>(Arrays.asList(new Long[]{1L, 4L, 6L}))));
+        createSpecialization(new Specialization(1, "Applied Mathematics", 4, new ArrayList<>(Arrays.asList(new Long[]{1L, 2L, 4L, 6L}))));
+        createSpecialization(new Specialization(2, "Applied Physics", 4, new ArrayList<>(Arrays.asList(new Long[]{1L, 2L, 3L, 5L, 6L}))));
+        createSpecialization(new Specialization(3, "Translator", 4, new ArrayList<>(Arrays.asList(new Long[]{1L, 6L, 7L, 8L}))));
+        createSpecialization(new Specialization(4, "Medicine", 5, new ArrayList<>(Arrays.asList(new Long[]{1L, 5L, 6L, 9L, 10L}))));
     }
 
     @Override
