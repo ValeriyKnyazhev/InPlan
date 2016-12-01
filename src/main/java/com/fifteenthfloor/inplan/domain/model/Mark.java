@@ -1,5 +1,6 @@
 package com.fifteenthfloor.inplan.domain.model;
 
+import com.fifteenthfloor.inplan.resource.MarkModel;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -12,10 +13,10 @@ import java.util.Date;
 /**
  * @author Valeriy Knyazhev valeriy.knyazhev@yandex.ru
  */
-@Document(collection = "accounts")
+@Document(collection = "marks")
 @EqualsAndHashCode
 @NoArgsConstructor
-@TypeAlias("account")
+@TypeAlias("mark")
 public class Mark {
 
     private static final int MAX_VALUE = 10;
@@ -39,13 +40,31 @@ public class Mark {
     @Version
     private int version;
 
-    public Mark(int value, long student, long professor, long course, Date date, String description) {
+    public Mark(long id, int value, long student, long professor, long course, Date date, String description) {
+        this.id = id;
         setStudent(student);
         setProfessor(professor);
         setCourse(course);
         setValue(value);
         setDate(date);
         setDescription(description);
+    }
+
+    public Mark(MarkModel model) {
+        setValue(model.getValue());
+        setStudent(model.getStudent());
+        setProfessor(model.getProfessor());
+        setCourse(model.getCourse());
+        setDate(model.getDate());
+        setDescription(model.getDescription());
+    }
+
+    public MarkModel getModel() {
+        return new MarkModel(this.value, this.student, this.professor, this.course, this.date, this.description);
+    }
+
+    public long getId() {
+        return this.id;
     }
 
     public long getStudent() {
