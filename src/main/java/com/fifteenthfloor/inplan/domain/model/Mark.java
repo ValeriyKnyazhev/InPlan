@@ -1,20 +1,29 @@
 package com.fifteenthfloor.inplan.domain.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.annotation.Version;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
 /**
  * @author Valeriy Knyazhev valeriy.knyazhev@yandex.ru
  */
+@Document(collection = "accounts")
+@EqualsAndHashCode
 @NoArgsConstructor
+@TypeAlias("account")
 public class Mark {
 
     private static final int MAX_VALUE = 10;
 
     private static final int MIN_VALUE = 0;
+
+    @Id
+    private long id;
 
     private int value;
 
@@ -22,13 +31,18 @@ public class Mark {
 
     private long professor;
 
+    private long course;
+
     private Date date;
 
     private String description;
+    @Version
+    private int version;
 
-    public Mark(int value, long student, long professor, Date date, String description) {
+    public Mark(int value, long student, long professor, long course, Date date, String description) {
         setStudent(student);
         setProfessor(professor);
+        setCourse(course);
         setValue(value);
         setDate(date);
         setDescription(description);
@@ -38,28 +52,12 @@ public class Mark {
         return this.student;
     }
 
-    public int getValue() {
-        return this.value;
-    }
-
-    public long getProfessor() {
-        return this.professor;
-    }
-
-    public Date getDate() {
-        return this.date;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
     public void setStudent(long student) {
         this.student = student;
     }
 
-    public void setProfessor(long professor) {
-        this.professor = professor;
+    public int getValue() {
+        return this.value;
     }
 
     public void setValue(int value) throws NotValidMarkException{
@@ -70,8 +68,32 @@ public class Mark {
         }
     }
 
+    public long getProfessor() {
+        return this.professor;
+    }
+
+    public void setProfessor(long professor) {
+        this.professor = professor;
+    }
+
+    public long getCourse() {
+        return this.course;
+    }
+
+    public void setCourse(long course) {
+        this.course = course;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
     public void setDescription(String description) {
