@@ -30,6 +30,17 @@ public class InMemoryPlanRepository implements PlanRepository {
     }
 
     @Override
+    public ArrayList<Plan> getPlansBySpecialization(long specialization) {
+        ArrayList<Plan> plans = new ArrayList<>();
+        for (Plan plan : this.plans) {
+            if (plan.getSpecialization() == specialization) {
+                plans.add(plan);
+            }
+        }
+        return plans;
+    }
+
+    @Override
     public Set<Long> getPlanCourses(long id) {
         Plan plan = this.plans.stream().filter(p -> id == p.getId()).findFirst().orElse(null);
         if (plan != null) {

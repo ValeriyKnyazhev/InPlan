@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 /**
@@ -46,6 +48,24 @@ public class PlanResource {
             return ResponseEntity.ok(plan.getCourses());
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plan by id " + id + " not found");
+    }
+
+    @GetMapping(value = "/specialization/id/{specialization}", produces = {APPLICATION_JSON_UTF8_VALUE})
+    /*
+    GET /plans/specialization/id/2
+     */
+    @ResponseBody
+    public ResponseEntity<Object> getIdPlansBySpecialization(@PathVariable long specialization) {
+        ArrayList<Long> plans = new ArrayList<>();
+        for (Plan plan : this.planRepository.getPlansBySpecialization(specialization)) {
+            if (plan.getSpecialization() == specialization) {
+                plans.add(plan.getId());
+            }
+        }
+        if (!plans.isEmpty()) {
+            return ResponseEntity.ok(plans);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plans by specialization " + specialization + " not found");
     }
 
 }
