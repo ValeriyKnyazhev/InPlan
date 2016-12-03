@@ -14,6 +14,9 @@ public interface PlanRepository {
 
     Set<Long> getPlanCourses(long id);
 
+
+    ArrayList<Long> getPlansByCourse(long course);
+
     void createPlan(Plan plan);
 
 }

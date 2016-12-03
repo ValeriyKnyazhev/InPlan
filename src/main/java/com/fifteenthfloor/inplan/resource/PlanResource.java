@@ -37,6 +37,19 @@ public class PlanResource {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plan by id " + id + " not found");
     }
 
+    @GetMapping(value = "/all/bycourse/{course}", produces = {APPLICATION_JSON_UTF8_VALUE})
+    /*
+    GET /plans/all/bycourse/11
+     */
+    @ResponseBody
+    public ResponseEntity<Object> getPlansByCourse(@PathVariable long course) {
+        ArrayList<Long> plans = this.planRepository.getPlansByCourse(course);
+        if (!plans.isEmpty()) {
+            return ResponseEntity.ok(plans);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plans by course " + course + " not found");
+    }
+
     @GetMapping(value = "/courses/id/{id}", produces = {APPLICATION_JSON_UTF8_VALUE})
     /*
     GET /plans/courses/id/11
