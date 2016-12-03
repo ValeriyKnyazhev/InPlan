@@ -36,7 +36,7 @@ public class MongoMarkRepository implements MarkRepository {
     public void create(MarkModel model) {
         long id = this.mongoCounterService.nextId("marks");
         try {
-            this.mongoOperations.insert(new Mark(model));
+            this.mongoOperations.insert(new Mark(id, model));
         } catch (DuplicateKeyException e) {
             throw new MarkAlreayExistsException("Mark with id " + id + " already exists.");
         }
@@ -80,6 +80,7 @@ public class MongoMarkRepository implements MarkRepository {
                 storedMark.setStudent(model.getStudent());
                 storedMark.setProfessor(model.getProfessor());
                 storedMark.setCourse(model.getCourse());
+                storedMark.setDescription(model.getDescription());
             }
             this.mongoOperations.save(storedMark);
         } catch (Exception e) {
@@ -96,4 +97,5 @@ public class MongoMarkRepository implements MarkRepository {
             throw new MarkNotFoundException("Mark with id " + id + " not found.");
         }
     }
+
 }

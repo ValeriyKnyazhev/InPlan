@@ -50,21 +50,25 @@ public class Mark {
         setDescription(description);
     }
 
-    public Mark(MarkModel model) {
+    public Mark(long id, MarkModel model) {
+        setId(id);
         setValue(model.getValue());
         setStudent(model.getStudent());
         setProfessor(model.getProfessor());
         setCourse(model.getCourse());
-        setDate(model.getDate());
         setDescription(model.getDescription());
     }
 
     public MarkModel getModel() {
-        return new MarkModel(this.value, this.student, this.professor, this.course, this.date, this.description);
+        return new MarkModel(this.value, this.student, this.professor, this.course, this.description);
     }
 
     public long getId() {
         return this.id;
+    }
+
+    private void setId(long id) {
+        this.id = id;
     }
 
     public long getStudent() {

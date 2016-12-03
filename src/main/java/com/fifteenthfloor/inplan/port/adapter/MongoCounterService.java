@@ -18,7 +18,7 @@ public class MongoCounterService {
     @Autowired
     private MongoOperations mongoOperations;
 
-    public long nextId(String collectionName) {
+    long nextId(String collectionName) {
         Query query = new Query().addCriteria(where("_id").is(collectionName));
         FindAndModifyOptions options = new FindAndModifyOptions().upsert(true).returnNew(true);
         MongoCounter counter = this.mongoOperations
