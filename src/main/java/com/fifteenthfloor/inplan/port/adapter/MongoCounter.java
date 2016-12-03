@@ -22,7 +22,12 @@ public class MongoCounter {
         this(collectionName, 1L);
     }
 
-    protected long seq() {
+    protected MongoCounter() {
+
+    }
+
+    long seq() {
         return this.seq;
     }
+
 }

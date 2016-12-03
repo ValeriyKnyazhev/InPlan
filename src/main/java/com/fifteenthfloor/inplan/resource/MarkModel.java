@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 /**
  * @author Valeriy Knyazhev
  */
@@ -22,19 +20,16 @@ public class MarkModel {
 
     private long course;
 
-    private Date date;
-
     private String description;
 
     @JsonCreator
     public MarkModel(@JsonProperty("value") int value, @JsonProperty("student") long student,
                      @JsonProperty("professor") long professor, @JsonProperty("course") long course,
-                     @JsonProperty("date") Date date, @JsonProperty("description") String description) {
+                     @JsonProperty("description") String description) {
         this.value = value;
         this.student = student;
         this.professor = professor;
         this.course = course;
-        this.date = date;
         this.description = description;
     }
 
