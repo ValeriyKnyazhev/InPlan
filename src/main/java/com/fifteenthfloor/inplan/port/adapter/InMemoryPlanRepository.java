@@ -51,6 +51,19 @@ public class InMemoryPlanRepository implements PlanRepository {
     }
 
     @Override
+    public ArrayList<Long> getPlansByCourse(long course) {
+        ArrayList<Long> plans = new ArrayList<>();
+        for (Plan plan : this.plans) {
+            if (plan.getCourses().contains(course)) {
+                plans.add(plan.getId());
+            }
+        }
+        return plans;
+
+    }
+
+
+    @Override
     public void createPlan(Plan plan) {
         if (getPlan(plan.getId()) == null) {
             this.plans.add(plan);
